@@ -41,9 +41,9 @@ def contains_char(word: str, letter: str) -> None:
     if word[3] == letter:
         print(letter + " found at index 3")
         count += 1
-    if (
-        word[4] == letter
-    ):  # I started out with some of these as elif and realized that didn't allow each letter to be checked separately
+    if word[4] == letter:
+        # I started out with some of these as elif and realized that didn't
+        # allow each letter to be checked separately
         print(letter + " found at index 4")
         count += 1
     if (
