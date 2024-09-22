@@ -28,27 +28,16 @@ def input_letter() -> str:
 def contains_char(word: str, letter: str) -> None:
     """Check for letter in word"""
     count: int = 0
+    index: int = 0
     print("Searching for " + letter + " in " + word)
-    if word[0] == letter:
-        print(letter + " found at index 0")
-        count += 1
-    if word[1] == letter:
-        print(letter + " found at index 1")
-        count += 1
-    if word[2] == letter:
-        print(letter + " found at index 2")
-        count += 1
-    if word[3] == letter:
-        print(letter + " found at index 3")
-        count += 1
-    if word[4] == letter:
-        # I started out with some of these as elif and realized that didn't
-        # allow each letter to be checked separately
-        print(letter + " found at index 4")
-        count += 1
-    if (
-        count == 0
-    ):  # I initially had this under an else: function, but needed to make it an if
+    while index < len(
+        word
+    ):  # I outlined each index as an individual if else function, but then later changed it into a while loop with local variables
+        if word[index] == letter:
+            print(letter + " found at index " + str(index))
+            count += 1
+        index += 1
+    if count == 0:
         print("No instances of " + letter + " found in " + word)
     else:
         print(str(count) + " instances of " + letter + " found in " + word)
