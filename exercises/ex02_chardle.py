@@ -19,7 +19,8 @@ def input_letter() -> str:
     letter = str(input("Enter a single character: "))
     if len(letter) == 1:
         print(letter)
-        return letter  # I initially forgot that the result should be a return value as well as printed
+        return letter
+    # I initially forgot that the result should be a return value as well as printed
     else:
         print("Error: Character must be a single character.")
         exit()
@@ -30,13 +31,13 @@ def contains_char(word: str, letter: str) -> None:
     count: int = 0
     index: int = 0
     print("Searching for " + letter + " in " + word)
-    while index < len(
-        word
-    ):  # I outlined each index as an individual if else function, but then later changed it into a while loop with local variables
+    while index < len(word):
+        # I outlined each index as an individual if else function, but then later
+        # changed it into a while loop with local variables
         if word[index] == letter:
             print(letter + " found at index " + str(index))
             count += 1
-        index += 1
+            index += 1
     if count == 0:
         print("No instances of " + letter + " found in " + word)
     else:
