@@ -12,7 +12,8 @@ def guess_a_number() -> None:
         print("You got it!")
     elif guess < secret:
         print("Your guess was too low! The secret number is 7.")
-    else:  # no need to go into the > specification since that is the only exception to other rules
+    else:  # no need to go into the > specification since that is the only exception to
+        # other rules
         print("Your guess was too high! The secret number is 7.")
 
 
