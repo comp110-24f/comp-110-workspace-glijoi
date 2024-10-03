@@ -1,12 +1,10 @@
-def double(x: int) -> int:
-    return x * 2
+def lessen(my_list: list[int]):
+    idx: int = 0
+    while idx < len(my_list):
+        my_list[idx] = my_list[idx] - 1
+        idx += 1
 
 
-def double_display(y: int):
-    print(y * 2)
-
-
-double_display(2)
-
-if __name__ == "__main__":
-    print(double(3))
+msg: list[int] = [4, 5, 6]
+lessen(msg)
+print(msg)
