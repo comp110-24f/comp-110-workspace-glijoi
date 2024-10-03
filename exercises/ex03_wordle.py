@@ -14,14 +14,11 @@ def input_guess(secret_word_len: int) -> str:
 def contains_char(word: str, letter: str) -> bool:
     """checks each character of guess for the letter"""
     assert len(letter) == 1
-    idx: int = 0
-    while idx <= len(word):
-        if idx == len(word):
-            return False
-        elif word[idx] == letter:
-            return True
-        else:
-            idx += 1
+    return letter in word
+    # instead of using "return letter in word" I tried to
+    # create a lengthy function that manually checked each
+    # letter and returned True or False, which doesn't work
+    # unless the return type is None, so I fixed that
 
 
 def emojified(guess: str, secret: str) -> str:
@@ -31,6 +28,9 @@ def emojified(guess: str, secret: str) -> str:
     GREEN_BOX: str = "\U0001F7E9"
     YELLOW_BOX: str = "\U0001F7E8"
     result: str = ""
+    # I got stuck when trying to print the result until
+    # I realized I needed to start with a blank string
+    # as a variable
     index: int = 0
     while index < len(guess):
         if guess[index] == secret[index]:
@@ -39,6 +39,7 @@ def emojified(guess: str, secret: str) -> str:
             result += YELLOW_BOX
         else:
             result += WHITE_BOX
+        index += 1
     return result
 
 
@@ -47,15 +48,16 @@ def main(secret: str) -> None:
     turn: int = 0
     max: int = 6
     win: bool = False
-    while turns < max and not win:
+    while turn < max and not win:
         turn += 1
-        print(f"=== {turn}/6 ===")
+        print(f"=== Turn {turn}/{max} ===")
+        # I initially forgot the word Turn so I fixed that
         guess = input_guess(secret_word_len=len(secret))
-        result = emojified(guess, secret)
-        print(result)
+        emoji_result = emojified(guess, secret)
+        print(emoji_result)
         if guess == secret:
             win = True
-    if win:
+    if win is True:
         print(f"You won in {turn}/{max} turns!")
     else:
         print(f"X/{max} - Sorry, try again tomorrow!")
