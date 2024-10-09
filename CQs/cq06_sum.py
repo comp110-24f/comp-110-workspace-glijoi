@@ -21,9 +21,6 @@ def f_sum(vals: list[float]) -> float:
 
 def f_range_sum(vals: list[float]) -> float:
     sum: float = 0.0
-    for elem in range(0, len(vals)):
-        sum += elem
+    for i in range(0, len(vals)):
+        sum += vals[i]
     return sum
-
-
-# DELETE AND RUN THIS COMMAND TO SUBMIT: python -m tools.submission CQs/cq06_sum.py
