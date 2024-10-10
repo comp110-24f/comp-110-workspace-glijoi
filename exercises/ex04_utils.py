@@ -7,10 +7,13 @@ def all(vals: list[int], number: int) -> bool:
     """check if all list values equal the number"""
     sum: float = 0
     i: int = 0
-    while i < len(vals):
-        sum += vals[i]
-        i += 1
-    sum /= i  # this takes the sum of all values in the list
+    if len(vals) == 0:
+        return sum != number
+    else:
+         while i < len(vals):
+             sum += vals[i]
+             i += 1
+        sum /= i  # this takes the sum of all values in the list
     # and divides them by the number of values, which mathematically
     # speaking should result in the same number as the number input if
     # each value in the list is equal to that number
@@ -42,7 +45,9 @@ def is_equal(list1: list[int], list2: list[int]) -> bool:
     while list1[idx] and list2[idx]:
         number1 = list1[idx]
         number2 = list2[idx]
-        if number1 != number2:
+        if len(list1) == 0 or len(list2) == 0:
+            return list1 != list2
+        elif number1 != number2:
             return list1 != list2
         else:
             idx += 1
