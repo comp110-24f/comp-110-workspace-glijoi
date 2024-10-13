@@ -42,6 +42,8 @@ def is_equal(list1: list[int], list2: list[int]) -> bool:
     if len(list1) != len(list2):
         return False
     elif len(list1) == 0 and len(list2) == 0:
+        return True
+    elif len(list1) == 0 or len(list2) == 0:
         return False
     else:
         while idx < len(list1):
