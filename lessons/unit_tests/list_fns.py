@@ -3,6 +3,8 @@
 
 def get_first(vals: list[str]) -> str:
     """takes a list and returns first element"""
+    if len(vals) == 0:
+        return ""
     return vals[0]
 
 
