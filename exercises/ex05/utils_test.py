@@ -3,6 +3,7 @@
 __author__ = "730667690"
 
 from exercises.ex05.utils import only_evens, sub, add_at_index
+import pytest
 
 
 def test_only_evens_edge() -> None:
@@ -38,16 +39,22 @@ def test_sub_use_2() -> None:
     assert sub([1, 2, 3, 4, 5], -2, 5) == [1, 2, 3, 4, 5]
 
 
-def test_add_at_index_edge() -> None:
+def test_add_at_index_edge():
     """if index is negative, should raise an error"""
-    assert add_at_index([1, 2, 3], 5, -2) == IndexError
+    vals = [1, 2, 3]
+    with pytest.raises(IndexError):
+        add_at_index(vals, 5, -2)
 
 
 def test_add_at_index_use_1() -> None:
     """if index is 0, should replace first element"""
-    assert add_at_index([1, 2, 3], 5, 0) == [5, 2, 3]
+    vals = [1, 2, 3]
+    add_at_index(vals, 5, 0)
+    assert vals == [5, 2, 3]
 
 
 def test_add_at_index_use_2() -> None:
     """if only one element in list, index 0 should replace that one element"""
-    assert add_at_index([1], 5, 0) == [5]
+    vals = [1]
+    add_at_index(vals, 5, 0)
+    assert vals == [5]
