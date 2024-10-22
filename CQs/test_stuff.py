@@ -1,10 +1,10 @@
-def lessen(my_list: list[int]):
-    idx: int = 0
-    while idx < len(my_list):
-        my_list[idx] = my_list[idx] - 1
-        idx += 1
-
-
-msg: list[int] = [4, 5, 6]
-lessen(msg)
-print(msg)
+def add_at_index(vals: list[int], elem: int, index: int) -> None:
+    """modifies input list to put elem at index"""
+    if (index < 0) or (index > len(vals)):
+        raise IndexError("Index is out of bounds for the input list")
+    elif (index == 0) and (len(vals) == 0):
+        vals.append(elem)
+    elif index == len(vals) + 1:
+        vals.append(elem)
+    else:
+        vals[index] = elem
