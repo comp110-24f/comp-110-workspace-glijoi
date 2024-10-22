@@ -40,7 +40,7 @@ def sub(vals: list[int], start: int, end: int) -> list[int]:
 
 def add_at_index(vals: list[int], elem: int, index: int) -> None:
     """modifies input list to put elem at index"""
-    if index < 0 or index > len(vals):
+    if (index < 0) or (index > len(vals)):
         raise IndexError("Index is out of bounds for the input list")
     else:
         vals[index] = elem
