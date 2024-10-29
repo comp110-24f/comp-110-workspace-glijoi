@@ -1,10 +1,19 @@
-def add_at_index(vals: list[int], elem: int, index: int) -> None:
-    """modifies input list to put elem at index"""
-    if (index < 0) or (index > len(vals)):
-        raise IndexError("Index is out of bounds for the input list")
-    elif (index == 0) and (len(vals) == 0):
-        vals.append(elem)
-    elif index == len(vals) + 1:
-        vals.append(elem)
-    else:
-        vals[index] = elem
+class Profile:
+    username: str
+    bio: str
+    followers: list[str]
+    following: list[str]
+    private: bool
+
+    def __init__(self):
+        self.username = "usr9"
+        self.bio = ""
+        self.followers = []
+        self.following = []
+        self.private = False
+
+
+my_prof: Profile = Profile()
+my_prof.username = "comp110fan"
+my_prof.following.append("unc.latinosintech")
+print(my_prof.following)
