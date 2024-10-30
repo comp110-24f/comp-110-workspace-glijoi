@@ -48,12 +48,31 @@ def favorite_color(input: dict[str, str]) -> str:
 
 def count(input: list[str]) -> dict[str, int]:
     """counts number of times a each value appears in the list"""
-    counted: dict[int, int] = {}
-    index: int = 0
-    while index < len(input):
-        if input[index] in counted:
-            counted.[input[index]] += 1 #from here down idrk whats happening
+    counted: dict[str, int] = {}
+    for i in input:
+        if i in counted:
+            counted[i] += 1
         else:
-            counted.[input[index]] = 1
+            counted[i] = 1
+    return counted
 
 
+def alphabetizer(input: list[str]) -> dict[str, list[str]]:
+    """sorts words by first letter"""
+    letters: dict[str, list[str]] = {}
+    for word in input:
+        letter: str = word[0].lower()
+        if letter in letters:
+            letters[letter].append(word)
+        else:
+            letters[letter] = [word]
+    return letters
+
+
+def update_attendance(input: dict[str, list[str]], day: str, student: str) -> None:
+    """updates the attendance"""
+    if day in input:
+        if student not in input[day]:
+            input[day].append(student)
+        else:
+            input[day] = [student]
