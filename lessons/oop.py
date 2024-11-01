@@ -22,18 +22,3 @@ my_prof.follow(
     "unclatinosintech"
 )  # method call <object>.<method>(<non-self parameters>)
 print(my_prof.following)
-
-
-# Class and Method Writing
-# Class: Coordinate, attributes: x float and y float,
-# constructor takes 3 parameters: self, x float, and y float
-# method called get_dist that takes parameters self and other (another coordinate object)
-# should return distance btw the 2 coordinate objects
-
-class Coordinate:
-    x: float
-    y: float
-
-    def __init__(self, x, y):
-        self.x = 
-        self.y = 
