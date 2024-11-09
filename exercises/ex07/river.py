@@ -1,15 +1,15 @@
 """File to define River class."""
 
-from ex07.fish import Fish
-from ex07.bear import Bear
+from exercises.ex07.fish import Fish
+from exercises.ex07.bear import Bear
+
 
 class River:
-    
     day: int
     fish: list[Fish]
     bears: list[Bear]
-    
-    def __init__(self, num_fish: int, num_bears:int):
+
+    def __init__(self, num_fish: int, num_bears: int):
         """New River with num_fish Fish and num_bears Bears"""
         self.day: int = 0
         self.fish: list[Fish] = []
@@ -21,23 +21,43 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
+        checked_fish: list[Fish] = []
+        checked_bear: list[Bear] = []
+        idx: int = 0
+        while idx < len(self.fish):
+            if Fish.age <= 3:
+                checked_fish.append(self.fish[idx])
+            idx += 1
+        ind: int = 0
+        while ind < len(self.bears):
+            if Bear.age <= 5:
+                checked_bear.append(self.bears[ind])
+            ind += 1
+        self.fish = checked_fish
+        self.bears = checked_bear
         return None
 
     def bears_eating(self):
         return None
-    
+
     def check_hunger(self):
         return None
-        
+
     def repopulate_fish(self):
         return None
-    
+
     def repopulate_bears(self):
         return None
-    
+
     def view_river(self):
+        x: int = self.day
+        y: int = len(self.fish)
+        z: int = len(self.bears)
+        print(f"~~~ Day {x}: ~~~")
+        print(f"Fish population: {y}")
+        print(f"Bear population: {z}")
         return None
-            
+
     def one_river_day(self):
         """Simulate one day of life in the river"""
         # Increase day by 1
@@ -60,4 +80,20 @@ class River:
         self.repopulate_bears()
         # Visualize River
         self.view_river()
-            
+
+    def one_river_week(self):
+        count: int = 0
+        while count < 7:
+            self.one_river_day()
+            count += 1
+
+    def remove_fish(self, amount: int):
+        idx: int = len(self.fish) - 1
+        removed: list[Fish] = []
+        while idx < len(self.fish):
+            if idx < 0:
+                return None
+            elif idx > amount:
+                removed.append(self.fish[idx])
+            idx -= 1
+        self.fish = removed
