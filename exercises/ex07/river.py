@@ -23,23 +23,21 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
+        """checks ages of fish  and bear"""
         checked_fish: list[Fish] = []
         checked_bear: list[Bear] = []
-        idx: int = 0
-        while idx < len(self.fish):
-            if Fish.age <= 3:
-                checked_fish.append(self.fish[idx])
-            idx += 1
-        ind: int = 0
-        while ind < len(self.bears):
-            if Bear.age <= 5:
-                checked_bear.append(self.bears[ind])
-            ind += 1
+        for fish in self.fish:
+            if fish.age <= 3:
+                checked_fish.append(fish)
+        for bear in self.bears:
+            if bear.age <= 5:
+                checked_bear.append(bear)
         self.fish = checked_fish
         self.bears = checked_bear
         return None
 
     def bears_eating(self):
+        """bears eat fish if enough fish per bear"""
         ate: int = 3
         for bear in self.bears:
             if len(self.fish) >= 5:
@@ -48,6 +46,7 @@ class River:
         return None
 
     def check_hunger(self):
+        """checks hunger of bears"""
         survived: list[Bear] = []
         idx: int = 0
         while idx < len(self.bears):
@@ -58,6 +57,7 @@ class River:
         return None
 
     def repopulate_fish(self):
+        """fish reproduce in pairs"""
         new: float = 0
         if len(self.fish) % 2 == 0:
             new = (len(self.fish) / 2) * 4
@@ -69,6 +69,7 @@ class River:
         return None
 
     def repopulate_bears(self):
+        """bears reproduce in pairs"""
         new: float = 0
         if len(self.bears) % 2 == 0:
             new = len(self.bears) / 2
@@ -80,6 +81,7 @@ class River:
         return None
 
     def view_river(self):
+        """river stats per day"""
         x: int = self.day
         y: int = len(self.fish)
         z: int = len(self.bears)
@@ -112,13 +114,14 @@ class River:
         self.view_river()
 
     def one_river_week(self):
+        """river after one week of simulation"""
         count: int = 0
         while count < 7:
             self.one_river_day()
             count += 1
-        self.one_river_day()
 
     def remove_fish(self, amount: int):
+        """removes fish as they are eaten"""
         while amount > 0:
             self.fish.pop(0)
             amount -= 1

@@ -1,3 +1,5 @@
+"""runs the simulation of the river"""
+
 __author__ = "730667690"
 
 from exercises.ex07.river import River
