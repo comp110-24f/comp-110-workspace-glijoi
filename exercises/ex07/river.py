@@ -1,5 +1,7 @@
 """File to define River class."""
 
+__author__ = "730667690"
+
 from exercises.ex07.fish import Fish
 from exercises.ex07.bear import Bear
 
@@ -38,11 +40,11 @@ class River:
         return None
 
     def bears_eating(self):
-        if len(self.fish) / len(self.bears) >= 5:
-            fish_eaten: int = len(self.bears) * 3
-            self.remove_fish(amount=fish_eaten)
-            for bear in self.bears:
-                bear.eat(num_fish=fish_eaten)
+        ate: int = 3
+        for bear in self.bears:
+            if len(self.fish) >= 5:
+                self.remove_fish(amount=ate)
+                bear.eat(num_fish=ate)
         return None
 
     def check_hunger(self):
@@ -114,14 +116,10 @@ class River:
         while count < 7:
             self.one_river_day()
             count += 1
+        self.one_river_day()
 
     def remove_fish(self, amount: int):
-        idx: int = len(self.fish) - 1
-        removed: list[Fish] = []
-        while idx < len(self.fish):
-            if idx < 0:
-                return None
-            elif idx > amount:
-                removed.append(self.fish[idx])
-            idx -= 1
-        self.fish = removed
+        while amount > 0:
+            self.fish.pop(0)
+            amount -= 1
+        return None
