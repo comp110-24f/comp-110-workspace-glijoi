@@ -1,4 +1,4 @@
-"""runs the simulation of the river."""
+"""Runs the simulation of the river."""
 
 __author__ = "730667690"
 
