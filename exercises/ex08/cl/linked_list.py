@@ -33,10 +33,6 @@ def to_str(head: Node | None) -> str:
         return f"{head.value} -> {rest}"
 
 
-print(to_str(one))
-print(to_str(courses))
-
-
 def last(head: Node) -> int:
     """Return the last value of a non-empty list."""
     print(f"Enter last ({head.value})")
@@ -47,10 +43,6 @@ def last(head: Node) -> int:
         rest: int = last(head.next)
         print(f"Return recur: {head.value} -> {rest}")
         return rest
-
-
-print(last(one))  # expect to print 2
-print(last(courses))  # expect to print 301
 
 
 def value_at(head: Node | None, index: int) -> int:
@@ -79,3 +71,23 @@ def max(head: Node | None):
 
 def linkify(items: list[int]) -> Node | None:
     """Returns a linked list of nodes with the values from the input list."""
+    if len(items) == 0:
+        return None
+    else:
+        return Node(items[0], linkify(items[1:]))
+
+
+def scale(head: Node | None, factor: int) -> Node | None:
+    """Returns linked list of nodes where each node is multiplied by the factor."""
+    if head is None:
+        return None
+    else:
+        scaled: Node = Node(head.value * factor, None)
+        current_head = head.next
+        current_scaled = scaled
+
+        while current_head is not None:
+            current_scaled.next = Node(current_head.value * factor, None)
+            current_head = current_head.next
+            current_scaled = current_scaled.next
+        return scaled
