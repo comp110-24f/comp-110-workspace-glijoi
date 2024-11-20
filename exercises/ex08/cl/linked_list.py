@@ -59,19 +59,19 @@ def max(head: Node | None):
     """Returns the max data value in the linked list."""
     if head is None:
         raise ValueError("Cannot call max with None")
+    if head.next is None:
+        return head.value
     else:
-        maximum = head.value
-        now = head.next
-        while now is not None:
-            if now.value > maximum:
-                maximum = now.value
-            now = now.next
-    return maximum
+        max_rest = max(head.next)
+        if head.value > max_rest:
+            return head.value
+        else:
+            return max_rest
 
 
 def linkify(items: list[int]) -> Node | None:
     """Returns a linked list of nodes with the values from the input list."""
-    if len(items) == 0:
+    if not items:
         return None
     else:
         return Node(items[0], linkify(items[1:]))
@@ -82,12 +82,5 @@ def scale(head: Node | None, factor: int) -> Node | None:
     if head is None:
         return None
     else:
-        scaled: Node = Node(head.value * factor, None)
-        current_head = head.next
-        current_scaled = scaled
-
-        while current_head is not None:
-            current_scaled.next = Node(current_head.value * factor, None)
-            current_head = current_head.next
-            current_scaled = current_scaled.next
-        return scaled
+        scaled_next = scale(head.next, factor)
+        return Node(head.value * factor, scaled_next)
