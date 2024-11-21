@@ -1,11 +1,16 @@
 from __future__ import annotations
 
+__author__ = "730667690"
+
 
 class Node:
+    """Item for a linked list."""
+
     value: int
     next: Node | None
 
     def __init__(self, value: int, next: Node | None):
+        """Construct linked list."""
         self.value = value
         self.next = next
 
@@ -17,32 +22,6 @@ class Node:
         else:
             rest = self.next.__str__()
         return f"{self.value} -> {rest}"
-
-
-two: Node = Node(2, None)
-one: Node = Node(1, two)
-courses: Node = Node(110, Node(210, Node(301, None)))
-
-
-def to_str(head: Node | None) -> str:
-    """Represent a linked list as a string."""
-    if head is None:
-        return "None"
-    else:
-        rest: str = to_str(head.next)
-        return f"{head.value} -> {rest}"
-
-
-def last(head: Node) -> int:
-    """Return the last value of a non-empty list."""
-    print(f"Enter last ({head.value})")
-    if head.next is None:
-        print(f"Return base case: {head.value}")
-        return head.value
-    else:
-        rest: int = last(head.next)
-        print(f"Return recur: {head.value} -> {rest}")
-        return rest
 
 
 def value_at(head: Node | None, index: int) -> int:
@@ -71,8 +50,10 @@ def max(head: Node | None):
 
 def linkify(items: list[int]) -> Node | None:
     """Returns a linked list of nodes with the values from the input list."""
-    if not items:
+    if len(items) == 0:
         return None
+    if len(items) == 1:
+        return Node(items[0], None)
     else:
         return Node(items[0], linkify(items[1:]))
 
@@ -82,5 +63,4 @@ def scale(head: Node | None, factor: int) -> Node | None:
     if head is None:
         return None
     else:
-        scaled_next = scale(head.next, factor)
-        return Node(head.value * factor, scaled_next)
+        return Node(head.value * factor, scale(head.next, factor))
