@@ -36,7 +36,7 @@ def value_at(head: Node | None, index: int) -> int:
         return value_at(head.next, index - 1)
 
 
-def max(head: Node | None):
+def max(head: Node | None) -> int:
     """Returns the max data value in the linked list."""
     if head is None:
         raise ValueError("Cannot call max with None")
