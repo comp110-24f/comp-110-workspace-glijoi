@@ -1,3 +1,5 @@
+"""Working with Linked Lists."""
+
 from __future__ import annotations
 
 __author__ = "730667690"
